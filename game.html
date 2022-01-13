@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+    <script src="https://mixedreality.mozilla.org/ammo.js/builds/ammo.wasm.js"></script>
+    <script src="http://cdn.jsdelivr.net/gh/n5ro/aframe-physics-system@v4.0.1/dist/aframe-physics-system.min.js"></script>
+    <script src="main.js"></script>
+    
+</head>
+<body>
+    <a-scene id="scene" physics="driver: ammo; debug: false; debugDrawMode: 1;">
+        <a-entity id="rig" position="4 -30 7" rotation="55 0 0">
+            <a-entity id="camera" camera look-controls>
+                <a-cursor position=" 0 0 -1" color="purple"></a-cursor>
+                <a-sphere geometry="primitive: sphere"
+                    ammo-body="type: static; emitCollisionEvents: true;" ammo-shape="type: sphere"
+                    position="0 0 -6" radius="0.5"
+                    material="color: green"></a-sphere>
+            </a-entity>
+          </a-entity>
+        <a-box gameover geometry="primitive: box" 
+            ammo-body="type: static; emitCollisionEvents: true;" ammo-shape="type: box"
+            position="4 -29 4.5" color="blue" width=0.99></a-box>
+        <a-plane ammo-body="type: static" ammo-shape="type: box"
+            position="4 15 4" rotation="0 0 0" width="8" height="90"
+            color="yellow"></a-plane>
+    </a-scene>    
+</body>
+</html>
