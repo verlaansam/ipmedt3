@@ -1,12 +1,15 @@
 window.onload = (event) =>{
-  var x;
-
   
+  var x;
+  
+  
+
+
   function spawnBox(x){
     var box = document.createElement("a-box")
-    box.setAttribute("point")
+    box.setAttribute("point", "null")
     box.setAttribute("geometry","primitive: box")
-    box.setAttribute("ammo-body", "type: dynamic;")
+    box.setAttribute("ammo-body", "type: dynamic; emitCollisionEvents: true;")
     box.setAttribute("ammo-shape", "type: box")
     box.setAttribute("width", "1")
     box.setAttribute("height", "1")
@@ -58,6 +61,7 @@ window.onload = (event) =>{
   }
 
   function randomSequence(){
+    
     i = Math.floor(Math.random() * 5);
      switch(i){
       case 0:
@@ -79,14 +83,17 @@ window.onload = (event) =>{
   }
 
   setInterval(randomSequence, 2000);
-  
-}
 
-AFRAME.registerComponent('point', {
+  AFRAME.registerComponent('point', {
     init: function() {
       var el = this.el;
+      var score = document.getElementById("score")
+      let point;
+      score.innerHTML = point
       el.addEventListener("collidestart", function () {
-        console.log("point")
+        point += 1;
+        console.log(point)
+        score.innerHTML = point
       });
     }
   });
@@ -108,4 +115,8 @@ AFRAME.registerComponent('gameover', {
     });
   }
 });
+  
+}
+
+
   
