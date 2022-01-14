@@ -1,8 +1,8 @@
 window.onload = (event) =>{
   
   var x;
-  
-  
+  let point = 0;
+  var score = document.getElementById("score")
 
 
   function spawnBox(x){
@@ -82,14 +82,17 @@ window.onload = (event) =>{
      }
   }
 
+  function pointsTime(){
+    point +=1
+    score.innerHTML = point
+  }
+
   setInterval(randomSequence, 2000);
+  setInterval(pointsTime, 500)
 
   AFRAME.registerComponent('point', {
     init: function() {
       var el = this.el;
-      var score = document.getElementById("score")
-      let point;
-      score.innerHTML = point
       el.addEventListener("collidestart", function () {
         point += 1;
         console.log(point)
