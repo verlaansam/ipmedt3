@@ -7,9 +7,12 @@ header{
 }
 
 h1{
-    font-family: ;
+    font-family: 'Montserrat', sans-serif;
 }
 
 p{
     padding-right: 30px;
+    padding-left: 5px;
+    font-size: larger;
+    font-family: 'Montserrat', sans-serif;
 }
