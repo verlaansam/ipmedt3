@@ -9,14 +9,16 @@
     <script src="https://mixedreality.mozilla.org/ammo.js/builds/ammo.wasm.js"></script>
     <script src="http://cdn.jsdelivr.net/gh/n5ro/aframe-physics-system@v4.0.1/dist/aframe-physics-system.min.js"></script>
     <script src="https://unpkg.com/aframe-physics-extras@0.1.2/dist/aframe-physics-extras.min.js"></script>
-    <script src="main.js"></script>k
+    <script src="main.js"></script>
     <link rel="stylesheet" href="game.css">
     
 </head>
 <body>
     <header>
-        <h1>score:</h1>
+        <h1>Score:</h1>
         <p id="score">NaN</p>
+        <H1>Questions</H1>
+        <p id="quiz">NaN</p>
     </header>
     <a-scene id="scene" physics="driver: ammo; debug: true; debugDrawMode: 1;">
         <a-entity id="rig" position="4 -30 7" rotation="55 0 0">

@@ -1,8 +1,9 @@
 window.onload = (event) =>{
-  let lost = false;
-  var x;
   let point = 0;
+  let question = 0;
+  let time = 0;
   var score = document.getElementById("score")
+  var quiz = document.getElementById("quiz")
 
   //spawns regular blocks
   function spawnBox(x, y, z, w, h, d, c, s){
@@ -64,20 +65,22 @@ window.onload = (event) =>{
     }
   }
 
-  
-
-
   //adds poiny every half second
   function pointsTime(){
     point +=1
     score.innerHTML = point
-    //timespend functie?
+    time += 0.5
+    console.log(time)
+    localStorage.setItem('time', time)
   }
 
-  
-  
-/*a-frame components*/
+  //TODO api calls node.js
 
+  //takes care of everything
+  setInterval(randomSequence, 2000);
+  setInterval(pointsTime, 500)
+
+  /*a-frame components*/
   //gives point when you move block away
   AFRAME.registerComponent('point', {
     init: function() {
@@ -86,17 +89,25 @@ window.onload = (event) =>{
         point += 1;
         console.log(point)
         score.innerHTML = point
+        localStorage.setItem('points', point)
         //blocks hit function
       });
     }
   });
-  
 
-
-//takes care of everything
-setInterval(randomSequence, 2000);
-setInterval(pointsTime, 500)
-}
+  //when you touch quiz block
+  AFRAME.registerComponent('quiz', {
+    init: function() {
+      var el = this.el;
+      el.addEventListener("collidestart", function () {
+        question += 1;
+        console.log(question)
+        quiz.innerHTML = question
+        localStorage.setItem('quiz', question)
+      });
+    }
+  });
+} //end window.onload
 
 //when protected block is hit
 AFRAME.registerComponent('gameover', {
@@ -104,25 +115,11 @@ AFRAME.registerComponent('gameover', {
     var el = this.el;
     el.addEventListener("collidestart", function () {
       console.log("GameOver")
-      gameOver()
+      window.location.href = "gameover.html";
     });
   }
 });
 
-function gameOver(){
-  console.log("GameOver")
-  spawnBox(0, 0, -3, 3, 1, 1, "red", "#camera")
-}
 
-//when you touch quiz block
-AFRAME.registerComponent('quiz', {
-  init: function() {
-    var el = this.el;
-    el.addEventListener("collidestart", function () {
-      console.log("quiz")
-      //quizblocks hit function
-    });
-  }
-});
 
   
