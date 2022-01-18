@@ -10,12 +10,13 @@ body{
     justify-content: center;
     align-items: center;
     font-family: 'Montserrat', sans-serif;
+    background-color: rgb(85, 84, 84);
 }
 
 section{
     padding: 100px;
     margin: 50px;
-    background-color: aqua;
+    background-color: rgb(33, 189, 189);
     border-radius: 2000px;
     
 }

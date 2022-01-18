@@ -24,7 +24,11 @@
     </header>
     <a-scene id="scene" physics="driver: ammo; debug: true; debugDrawMode: 1;">
         <a-assets>
-            <a-asset-item id="tree" src="balloon.gltf" ></a-asset-item>
+            <a-asset-item id="balloon" src="models/balloon.gltf" ></a-asset-item>
+            <a-asset-item id="p1" src="models/punaiseBlue.glb" ></a-asset-item>
+            <a-asset-item id="p2" src="models/punaiseGreen.glb" ></a-asset-item>
+            <a-asset-item id="p3" src="models/punaiseRood.glb" ></a-asset-item>
+            <a-asset-item id="p4" src="models/punaiseOrange.glb" ></a-asset-item>
           </a-assets>
         <a-entity id="rig" position="4 -30 7" rotation="55 0 0">
             <a-entity id="camera" camera look-controls>
@@ -35,7 +39,7 @@
                     material="color: green"></a-sphere>
             </a-entity>
           </a-entity>
-        <a-entity gameover gltf-model="#tree" scale="0.5 0.5 0.5" geometry="primitive: box" 
+        <a-entity gameover gltf-model="#balloon" scale="0.5 0.5 0.5" geometry="primitive: box" 
             ammo-body="type: static; emitCollisionEvents: true;" ammo-shape="type: box"
             position="4 -28 5" rotation="-90 0 0" width="0.99"></a-entity>
         <a-plane color="red" width="100" height="100" rotation="-90 0 0" position="0 -100 0"></a-plane>

@@ -9,6 +9,8 @@ window.onload = (event) =>{
   function spawnBox(x, y, z, w, h, d, c, s){
     var box = document.createElement("a-box")
     box.setAttribute("point", "null")
+    box.setAttribute("gltf-model", `#p1`)
+    box.setAttribute("scale","0.5 0.5 0.5")
     box.setAttribute("geometry","primitive: box")
     box.setAttribute("ammo-body", "type: dynamic; emitCollisionEvents: true;")
     box.setAttribute("ammo-shape", "type: box")
@@ -24,6 +26,8 @@ window.onload = (event) =>{
   function spawnBoxQuiz(x, y, z, w, h, d, c, s){
     var box = document.createElement("a-box")
     box.setAttribute("quiz", "null")
+    box.setAttribute("gltf-model", "#p4")
+    box.setAttribute("scale","0.5 0.5 0.5")
     box.setAttribute("geometry","primitive: box")
     box.setAttribute("ammo-body", "type: dynamic; emitCollisionEvents: true;")
     box.setAttribute("ammo-shape", "type: box")
