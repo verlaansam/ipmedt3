@@ -6,37 +6,44 @@ window.onload = (event) =>{
   var quiz = document.getElementById("quiz")
 
   //spawns regular blocks
-  function spawnBox(x, y, z, w, h, d, c, s){
+  function spawnBox(x, y, z){
+    i = Math.floor(Math.random() * 3);
+    var m = "#p1"
+    switch(i){
+      case 0:
+        m = "#p1"
+        break
+      case 1:
+        m = "#p2"
+        break
+      case 2:
+        m = "#p3"
+        break
+    }
     var box = document.createElement("a-box")
     box.setAttribute("point", "null")
-    box.setAttribute("gltf-model", `#p1`)
-    box.setAttribute("scale","0.5 0.5 0.5")
+    box.setAttribute("gltf-model", `${m}`)
+    box.setAttribute("scale","0.4 0.4 0.4")
     box.setAttribute("geometry","primitive: box")
     box.setAttribute("ammo-body", "type: dynamic; emitCollisionEvents: true;")
     box.setAttribute("ammo-shape", "type: box")
-    box.setAttribute("width", `${w}`)
-    box.setAttribute("height", `${h}`)
-    box.setAttribute("depth", `${d}`)
+    box.setAttribute("rotation", "-90 0 0")
     box.setAttribute("position", `${x} ${y} ${z}`)
-    box.setAttribute("color", `${c}`)
-    document.querySelector(`${s}`).appendChild(box)
+    document.querySelector("a-scene").appendChild(box)
   }
 
   //spawns special quiz block
-  function spawnBoxQuiz(x, y, z, w, h, d, c, s){
+  function spawnBoxQuiz(x, y, z){
     var box = document.createElement("a-box")
     box.setAttribute("quiz", "null")
     box.setAttribute("gltf-model", "#p4")
-    box.setAttribute("scale","0.5 0.5 0.5")
+    box.setAttribute("scale","0.4 0.4 0.4")
     box.setAttribute("geometry","primitive: box")
     box.setAttribute("ammo-body", "type: dynamic; emitCollisionEvents: true;")
     box.setAttribute("ammo-shape", "type: box")
-    box.setAttribute("width", `${w}`)
-    box.setAttribute("height", `${h}`)
-    box.setAttribute("depth", `${d}`)
+    box.setAttribute("rotation", "-90 0 0")
     box.setAttribute("position", `${x} ${y} ${z}`)
-    box.setAttribute("color", `${c}`)
-    document.querySelector(`${s}`).appendChild(box)
+    document.querySelector("a-scene").appendChild(box)
   }
 
   //choses random spwan patern to spawn blocks in
@@ -45,26 +52,26 @@ window.onload = (event) =>{
     switch(i){
       case 0:
         j = Math.floor(Math.random() * 8);
-        spawnBoxQuiz(j, 90, 5, 1, 1, 2, "orange", "a-scene")
+        spawnBoxQuiz(j, 90, 5)
         break;
       case 1:
-        spawnBox(0, 90, 5, 1, 1, 2, "green", "a-scene")
-        spawnBox(3, 90, 5, 1, 1, 2, "green", "a-scene")
-        spawnBox(6, 90, 5, 1, 1, 2, "green", "a-scene")
+        spawnBox(0, 90, 5)
+        spawnBox(3, 90, 5)
+        spawnBox(6, 90, 5)
         break;
       case 2:
-        spawnBox(1, 90, 5, 1, 1, 2, "green", "a-scene")
-        spawnBox(4, 90, 5, 1, 1, 2, "green", "a-scene")
-        spawnBox(7, 90, 5, 1, 1, 2, "green", "a-scene")
+        spawnBox(1, 90, 5)
+        spawnBox(4, 90, 5)
+        spawnBox(7, 90, 5)
         break;
       case 3:
         j = Math.floor(Math.random() * 8);
-        spawnBox(j, 90, 5, 1, 1, 2, "green", "a-scene");
+        spawnBox(j, 90, 5);
         break;
       case 4:
         j = Math.floor(Math.random() * 6) + 2;
-        spawnBox(j, 90, 5, 1, 1, 2, "green", "a-scene")
-        spawnBox(j+2, 90, 5, 1, 1, 2, "green", "a-scene")
+        spawnBox(j, 90, 5)
+        spawnBox(j+2, 90, 5)
         break;
     }
   }
