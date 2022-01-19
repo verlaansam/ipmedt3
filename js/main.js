@@ -2,8 +2,31 @@ window.onload = (event) =>{
   let point = 0;
   let question = 0;
   let time = 0;
+  let x = 4
   var score = document.getElementById("score")
   var quiz = document.getElementById("quiz")
+  var rig = document.getElementById("rig")
+  var bal = document.getElementById("bal")
+  let moveRight = false;
+
+  function move(){
+    if( x <= 0.3){
+      moveRight = true;
+    }
+    if(x >= 8){
+      moveRight = false;
+    }
+    if(moveRight == true){
+      x += 0.05
+    }
+    if(moveRight == false){
+      x -= 0.05
+    }
+    rig.setAttribute('position', `${x}, -30, 7`)
+    bal.setAttribute('position', `${x}, -28, 5`)
+    console.log('hi')
+    console.log(x)
+  }
 
   //spawns regular blocks
   function spawnBox(x, y, z){
@@ -48,6 +71,7 @@ window.onload = (event) =>{
 
   //choses random spwan patern to spawn blocks in
   function randomSequence(){
+    
     let rows = [0,2,4,6,8]
     i = Math.floor(Math.random() * 8);
     switch(i){
@@ -108,7 +132,9 @@ window.onload = (event) =>{
 
   //takes care of everything
   setInterval(randomSequence,  2000-time);
-  setInterval(pointsTime, 500)
+  setInterval(move, 10);
+  setInterval(pointsTime, 500);
+  
 
   /*a-frame components*/
   //gives point when you move block away
