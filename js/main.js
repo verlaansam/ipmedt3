@@ -48,30 +48,49 @@ window.onload = (event) =>{
 
   //choses random spwan patern to spawn blocks in
   function randomSequence(){
-    i = Math.floor(Math.random() * 5);
+    let rows = [0,2,4,6,8]
+    i = Math.floor(Math.random() * 8);
     switch(i){
       case 0:
-        j = Math.floor(Math.random() * 8);
-        spawnBoxQuiz(j, 90, 5)
+        j = Math.floor(Math.random() * 5);
+        spawnBoxQuiz(rows[j], 90, 5)
         break;
       case 1:
         spawnBox(0, 90, 5)
-        spawnBox(3, 90, 5)
+        spawnBox(2, 90, 5)
+        spawnBox(4, 90, 5)
         spawnBox(6, 90, 5)
+        spawnBox(8, 90, 5)
         break;
       case 2:
-        spawnBox(1, 90, 5)
+        spawnBox(0, 90, 5)
         spawnBox(4, 90, 5)
-        spawnBox(7, 90, 5)
+        spawnBox(8, 90, 5)
         break;
       case 3:
-        j = Math.floor(Math.random() * 8);
-        spawnBox(j, 90, 5);
+        j = Math.floor(Math.random() * 5);
+        spawnBox(rows[j], 90, 5);
         break;
       case 4:
-        j = Math.floor(Math.random() * 6) + 2;
-        spawnBox(j, 90, 5)
-        spawnBox(j+2, 90, 5)
+        j = Math.floor(Math.random() * 3)+1;
+        spawnBox(rows[j]-2, 90, 5)
+        spawnBox(rows[j], 90, 5)
+        spawnBox(rows[j]+2, 90, 5)
+        break;
+      case 5:
+        spawnBox(0, 90, 5)
+        spawnBox(2, 90, 5)
+        spawnBox(6, 90, 5)
+        break;
+      case 6:
+        spawnBox(2, 90, 5)
+        spawnBox(6, 90, 5)
+        spawnBox(8, 90, 5)
+        break;
+      case 7:
+        j = Math.floor(Math.random() * 5);
+        spawnBox(row[j], 90, 5)
+        spawnBox(row[j]+2, 90, 5)
         break;
     }
   }
@@ -88,7 +107,7 @@ window.onload = (event) =>{
   //TODO api calls node.js
 
   //takes care of everything
-  setInterval(randomSequence, 2000);
+  setInterval(randomSequence,  2000-time);
   setInterval(pointsTime, 500)
 
   /*a-frame components*/

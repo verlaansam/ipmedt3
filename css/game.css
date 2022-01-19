@@ -1,13 +1,20 @@
 header{
-    width: 100vw;
-    background-color: green;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    width: 17vw;
+    display: grid;
+    background-color: rgba(82, 81, 81, 0.459);
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    margin-top: 10px;
+    margin-left: 10px;
+    padding: 5px;
+    border-radius: 10px;
+    border: 3px solid rgb(35, 35, 170);
 }
+
 
 h1{
     font-family: 'Montserrat', sans-serif;
+    z-index: 10;
 }
 
 p{
@@ -15,4 +22,5 @@ p{
     padding-left: 5px;
     font-size: larger;
     font-family: 'Montserrat', sans-serif;
+    z-index: 10;
 }

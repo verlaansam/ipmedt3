@@ -18,9 +18,9 @@
 <body>
     <header>
         <h1>Score:</h1>
-        <p id="score">0</p>
-        <h1>Questions:</h1>
-        <p id="quiz">0</p>
+        <h1 id="score">0</h1>
+        <h1>Questions: </h1>
+        <h1 id="quiz">0</h1>
     </header>
     <a-scene id="scene" physics="driver: ammo; debug: false; debugDrawMode: 1;">
         <a-assets>
@@ -30,7 +30,7 @@
             <a-asset-item id="p3" src="models/punaiseRood.glb" ></a-asset-item>
             <a-asset-item id="p4" src="models/punaiseYellow.glb" ></a-asset-item>
           </a-assets>
-        <a-entity id="rig" position="4 -30 7" rotation="55 0 0">
+        <a-entity id="rig" position="4 -30 7" rotation="65 0 0">
             <a-entity id="camera" camera look-controls>
                 <a-cursor position=" 0 0 -1" color="purple"></a-cursor>
                 <a-sphere geometry="primitive: sphere"
@@ -42,6 +42,13 @@
         <a-entity gameover gltf-model="#balloon" scale="0.5 0.5 0.5" geometry="primitive: box" 
             ammo-body="type: static; emitCollisionEvents: true;" ammo-shape="type: box"
             position="4 -28 5" rotation="-90 0 0" width="0.99"></a-entity>
+        <a-plane color="yellow" width="10" height="90" rotation="0 0 0" position="4 0 4"></a-plane>
+        <a-plane color="black" width="0.1" height="90" rotation="0 0 0" position="-1 0 4.01"></a-plane>
+        <a-plane color="black" width="0.1" height="90" rotation="0 0 0" position="1 0 4.01"></a-plane>
+        <a-plane color="black" width="0.1" height="90" rotation="0 0 0" position="3 0 4.01"></a-plane>
+        <a-plane color="black" width="0.1" height="90" rotation="0 0 0" position="5 0 4.01"></a-plane>
+        <a-plane color="black" width="0.1" height="90" rotation="0 0 0" position="7 0 4.01"></a-plane>
+        <a-plane color="black" width="0.1" height="90" rotation="0 0 0" position="9 0 4.01"></a-plane>
         <a-plane color="red" width="100" height="100" rotation="-90 0 0" position="0 -100 0"></a-plane>
     </a-scene>    
 </body>
