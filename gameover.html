@@ -6,33 +6,53 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GameOver</title>
     <script src="js/gameover.js"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/gameover.css">
+    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+    <script src="https://mixedreality.mozilla.org/ammo.js/builds/ammo.wasm.js"></script>
 </head>
 <body>
-    <article>
-        <section>
-            <h1>score:</h1>
-            <p id="FinalScore">0</p>
-        </section>
-        <section>
-            <h1>time:</h1>
-            <p id="FinalTime">0</p>
-        </section>
-        <section>
-            <h1>quiz:</h1>
-            <p id="FinalQuiz">0</p>
-        </section>
-    </article>
-    <article>
-        <section>
-            <h1>Restart</h1>
-        </section>
-        <section>
-            <h1>Menu</h1>
-        </section>
-    </article>
+    <a-scene id="scene" physics="driver: ammo; debug: false; debugDrawMode: 1;">
+        <a-assets>
+            <a-asset-item id="balloon" src="models/balloon.gltf" ></a-asset-item>
+            <a-asset-item id="p1" src="models/punaiseBlue.glb" ></a-asset-item>
+            <a-asset-item id="p2" src="models/punaiseGreen.glb" ></a-asset-item>
+            <a-asset-item id="p3" src="models/punaiseRood.glb" ></a-asset-item>
+            <a-asset-item id="p4" src="models/punaiseYellow.glb" ></a-asset-item>
+            <a-asset-item id="cloud" src="models/cloud.gltf" ></a-asset-item>
+            <a-asset-item id="grass" src="models/grass2.gltf" ></a-asset-item>
+          </a-assets>
+            <a-camera id="camera" position="0 0 -0.5">
+                <a-entity
+                    id="js--cursor"
+                    animation__click="property: scale; startEvents: click; easing: easeInCubic; dur: 150; from: 0.1 0.1 0.1; to: 1 1 1"
+                    animation__fusing="property: scale; startEvents: fusing; easing: easeInCubic; dur: 2000; from: 1 1 1; to: 0.1 0.1 0.1"
+                    animation="property: scale; startEvents: mouseleave; easing: easeInCubic; dur: 500; to: 1 1 1"
+
+                    cursor = "fuse: true; fuseTimeout: 2000"
+                    material = "color: black; shader: flat"
+                    position = "0 0 -0.5"
+                    raycaster = "objects: .js--place"
+                ></a-entity>
+                <a-cursor position=" 0 0 -1" color="purple"></a-cursor>
+            </a-camera>
+          <a-plane width="20" height="10" position="0 0 -5" color="#3a3a3a"></a-plane>
+          <a-entity text="value: GameOver; color:#FFF; " position="8 2.5 -4" color="black" scale="20 20 20" font="roboto"></a-entity>
+
+          <a-box color="orange" position="0 0 -5" width="2" height="1" ></a-box>
+          <a-entity text="value: Score: ; color:white;" position="1.7 0 -4" scale="5 5 5"></a-entity>
+          
+
+          <a-box color="orange" position="3 0 -5" width="2" height="1" ></a-box>
+          <a-entity text="value: Time: ; color:white;" position="-1 0 -4" scale="5 5 5"></a-entity>
+
+          <a-box color="orange" position="-3 0 -5" width="2" height="1" ></a-box>
+          <a-entity text="value: Quiz Questions: ; color:white;" position="4.4 0.2 -4" scale="5 5 5"></a-entity>
+          
+
+          <a-box class="js-place" color="orange" position="-2 -2 -5" width="2" height="0.5" ></a-box>
+          <a-entity text="value: Menu; color:white;" position="0.4 -1.8 -4" scale="5 5 5"></a-entity>
+          <a-box class="js-place" color="orange" position="2 -2 -5" width="2" height="0.5" ></a-box>
+          <a-entity text="value: Restart; color:white;" position="3.9 -1.8 -4" scale="5 5 5"></a-entity>
+        <a-sky color="skyblue"></a-sky>
+    </a-scene>
 </body>
 </html>

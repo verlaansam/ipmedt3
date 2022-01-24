@@ -29,10 +29,13 @@
             <a-asset-item id="p2" src="models/punaiseGreen.glb" ></a-asset-item>
             <a-asset-item id="p3" src="models/punaiseRood.glb" ></a-asset-item>
             <a-asset-item id="p4" src="models/punaiseYellow.glb" ></a-asset-item>
+            <a-asset-item id="cloud" src="models/cloud.gltf" ></a-asset-item>
+            <a-asset-item id="grass" src="models/grass2.gltf" ></a-asset-item>
           </a-assets>
         <a-entity id="rig" position="4 -30 7" rotation="65 0 0">
             <a-entity id="camera" camera look-controls>
                 <a-cursor position=" 0 0 -1" color="purple"></a-cursor>
+                <a-plane width="4" height="3" color="orange" position="-8 3.5 -5"></a-plane>
                 <a-sphere geometry="primitive: sphere"
                     ammo-body="type: static; emitCollisionEvents: true;" ammo-shape="type: sphere"
                     position="0 0 -6" radius="0.49"
@@ -42,6 +45,26 @@
         <a-entity gameover id="bal" gltf-model="#balloon" scale="0.5 0.5 0.5" geometry="primitive: box" 
             ammo-body="type: static; emitCollisionEvents: true;" ammo-shape="type: box"
             position="4 -28 5" rotation="-90 0 0" width="0.99"></a-entity>
+        <a-box gltf-model="#cloud" position="-10 3 8" rotation="0 -90 -90"></a-box>
+        <a-box gltf-model="#cloud" position="10 3 12" rotation="0 -90 -90"></a-box>
+        <a-box gltf-model="#cloud" position="30 3 10" rotation="-45 -90 -90"></a-box>
+        <a-box gltf-model="#cloud" position="-30 3 3" rotation="45 -90 -90"></a-box>
+        <a-box gltf-model="#cloud" position="60 3 8" rotation="-45 -90 -90"></a-box>
+        <a-box gltf-model="#cloud" position="-60 3 6" rotation="45 -90 -90"></a-box>
+
+        <a-box gltf-model="#cloud" position="-22 3 21" rotation="0 -90 -90"></a-box>
+        <a-box gltf-model="#cloud" position="18 3 19" rotation="0 -90 -90"></a-box>
+        <a-box gltf-model="#cloud" position="38 3 17" rotation="-45 -90 -90"></a-box>
+        <a-box gltf-model="#cloud" position="-42 3 16" rotation="45 -90 -90"></a-box>
+        <a-box gltf-model="#cloud" position="72 3 15" rotation="-45 -90 -90"></a-box>
+        <a-box gltf-model="#cloud" position="-68 3 19" rotation="45 -90 -90"></a-box>
+        
+        <a-box gltf-model="#grass" position="-60 3 -20" rotation="45 -90 -90"></a-box>
+        <a-box gltf-model="#grass" position="60 3 -20" rotation="-45 -90 -90"></a-box>
+        <a-box gltf-model="#grass" position="-90 -60 -30" rotation="90 -90 -90"></a-box>
+        <a-box gltf-model="#grass" position="90 -60 -30" rotation="-90 -90 -90"></a-box>
+        
+    
         <a-plane color="yellow" width="10" height="90" rotation="0 0 0" position="4 0 4"></a-plane>
         <a-plane color="black" width="0.1" height="90" rotation="0 0 0" position="-1 0 4.01"></a-plane>
         <a-plane color="black" width="0.1" height="90" rotation="0 0 0" position="1 0 4.01"></a-plane>
@@ -49,7 +72,9 @@
         <a-plane color="black" width="0.1" height="90" rotation="0 0 0" position="5 0 4.01"></a-plane>
         <a-plane color="black" width="0.1" height="90" rotation="0 0 0" position="7 0 4.01"></a-plane>
         <a-plane color="black" width="0.1" height="90" rotation="0 0 0" position="9 0 4.01"></a-plane>
-        <a-plane color="red" width="100" height="100" rotation="-90 0 0" position="0 -100 0"></a-plane>
-    </a-scene>    
+
+        <a-plane color="skyblue" width="100" height="100" rotation="-90 0 0" position="0 -100 0"></a-plane>
+        <a-sky color="skyblue"></a-sky>
+    </a-scene>  
 </body>
 </html>
