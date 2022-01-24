@@ -20,19 +20,19 @@
             <a-asset-item id="cloud" src="models/cloud.gltf" ></a-asset-item>
             <a-asset-item id="grass" src="models/grass2.gltf" ></a-asset-item>
           </a-assets>
-            <a-camera id="camera" position="0 0 -0.5">
+            <a-camera id="js--camera" position="0 0 -0.5">
                 <a-entity
                     id="js--cursor"
-                    animation__click="property: scale; startEvents: click; easing: easeInCubic; dur: 150; from: 0.1 0.1 0.1; to: 1 1 1"
-                    animation__fusing="property: scale; startEvents: fusing; easing: easeInCubic; dur: 2000; from: 1 1 1; to: 0.1 0.1 0.1"
-                    animation="property: scale; startEvents: mouseleave; easing: easeInCubic; dur: 500; to: 1 1 1"
+                    animation__click="property: scale; startEvents: click; easing: easeInCubic; dur: 50; from: 0.1 0.1 0.1; to: 1 1 1"
+                    animation__fusing="property: scale; startEvents: fusing; easing: easeInCubic; dur: 50; from: 1 1 1; to: 0.1 0.1 0.1"
+                    animation="property: scale; startEvents: mouseleave; easing: easeInCubic; dur: 50; to: 1 1 1"
 
-                    cursor = "fuse: true; fuseTimeout: 2000"
+                    cursor = "fuse: true; fuseTimeout: 50"
                     material = "color: black; shader: flat"
                     position = "0 0 -0.5"
-                    raycaster = "objects: .js--place"
+                    raycaster = "objects: .js--restart, .js--menu"
                 ></a-entity>
-                <a-cursor position=" 0 0 -1" color="purple"></a-cursor>
+                <a-cursor id="js--cursor" position=" 0 0 -1" color="purple"></a-cursor>
             </a-camera>
           <a-plane width="20" height="10" position="0 0 -5" color="#3a3a3a"></a-plane>
           <a-entity text="value: GameOver; color:#FFF; " position="8 2.5 -4" color="black" scale="20 20 20" font="roboto"></a-entity>
@@ -48,9 +48,9 @@
           <a-entity text="value: Quiz Questions: ; color:white;" position="4.4 0.2 -4" scale="5 5 5"></a-entity>
           
 
-          <a-box class="js-place" color="orange" position="-2 -2 -5" width="2" height="0.5" ></a-box>
+          <a-box class="js--menu" color="orange" position="-2 -2 -5" width="2" height="0.5" ></a-box>
           <a-entity text="value: Menu; color:white;" position="0.4 -1.8 -4" scale="5 5 5"></a-entity>
-          <a-box class="js-place" color="orange" position="2 -2 -5" width="2" height="0.5" ></a-box>
+          <a-box class="js--restart" color="orange" position="2 -2 -5" width="2" height="0.5" ></a-box>
           <a-entity text="value: Restart; color:white;" position="3.9 -1.8 -4" scale="5 5 5"></a-entity>
         <a-sky color="skyblue"></a-sky>
     </a-scene>

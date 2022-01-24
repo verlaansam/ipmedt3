@@ -1,5 +1,10 @@
 window.onload = (event) =>{
-    var places = document.getElementsByClassName("js--place")
+    var menu = document.getElementsByClassName("js--menu")
+    var restart = document.getElementsByClassName("js--restart")
+    var camera = document.getElementById("js--camera")
+    var cursor = document.getElementById("js--cursor")
+    console.log(restart)
+    console.log(camera)
 
     var score = localStorage.getItem('points')
     var textScore = document.createElement("a-entity")
@@ -23,14 +28,14 @@ window.onload = (event) =>{
     document.querySelector("a-scene").appendChild(textQuiz)
 
 
-    for (let i = 0; i < places.length; i++) {
-        console.log(places[i])
-        places[i].addEventListener('click', function(evt){
-            console.log(places[i])
-            let att = document.createAttribute("animation");
-            att.value = "property: position; easing: linear; dur: 2000; to: " + this.getAttribute('position').x + " 1.6 " + this.getAttribute('position').z;
-            camera.setAttribute('animation', att.value);
-        });
-    }
+    restart[0].addEventListener('click', function(evt){
+        console.log("click")
+        location.href = "game.html"
+    });
+
+    menu[0].addEventListener('click', function(evt){
+        console.log("click")
+        location.href = "index.html"
+    });
     
 }
