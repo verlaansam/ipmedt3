@@ -132,7 +132,7 @@ window.onload = (event) =>{
 
   //takes care of everything
   setInterval(randomSequence,  2000-time);
-  // setInterval(move, 10);
+  setInterval(move, 10);
   setInterval(pointsTime, 500);
   
 
@@ -158,6 +158,7 @@ window.onload = (event) =>{
       el.addEventListener("collidestart", function () {
         question += 1;
         console.log(question)
+        //hier komt node.js dinges
         quiz.innerHTML = question
         localStorage.setItem('quiz', question)
       });
