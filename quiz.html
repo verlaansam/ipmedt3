@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet"> 
+    <link rel="stylesheet" href="style.css">
+    <script src="scripts/questionControl.js" defer></script>
+    <script type="module" src="scripts/firebase.js"></script>
+    <title>Prototype VR project</title>
+</head>
+<body>
+    <header>
+        <p class="name" id="js--name">Player:</p>
+        <p class="score" id="js--score">Score: 0</p>
+    </header>
+    <main>
+        <section class="container">
+            <section class="container-question">
+                <h1 id="js--question" class="question">Fout bij ophalen vragen :/</h1>
+            </section>
+            <section id="js--answerContainer" class="container-answers">
+                <button class="answer-button" id="answer-button-a" answer="A">
+                    <p id="js--answerA">Antwoord A</p>
+                </button>
+                <button class="answer-button" id="answer-button-b" answer="B">
+                    <p id="js--answerB">Antwoord A</p>
+                </button>
+                <button class="answer-button" id="answer-button-c" answer="C">
+                    <p id="js--answerC">Antwoord A</p>
+                </button>
+                <button class="answer-button" id="answer-button-d" answer="D">
+                    <p id="js--answerD">Antwoord A</p>
+                </button>
+            </section>
+            <section id="js--questionContainerResult" class="container-question-result">
+                <section id="js--resultColorBox" class="question-result-answer">
+                    <h2 id="js--questionAnswer">Pestosaus</h2> 
+                    <p id="js--questionAnswerText">Goed gedaan je hebt nu 280 punten!</p>
+                </section>
+                
+                <section class="next-question" onclick="nextQuestion()">
+                    <button>
+                        <p id="js--nextQuestion">Volgende vraag</p>
+                    </button>
+                </section>
+            </section>
+        </section>
+    </main> 
+</body>
+</html>

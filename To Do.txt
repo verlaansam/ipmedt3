@@ -1,0 +1,8 @@
+Reload warning ✔
+Username te zien in beeld ✔
+Antwoord checken ✔
+Antwoorden tvg aan db 
+Stop and go voor de vragen
+Pole maken van de beantwoorde vragen
+Afvang en go functie maken voor vr omgeving
+Vraagteken ? uitleg

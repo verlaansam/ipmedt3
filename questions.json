@@ -1,0 +1,61 @@
+{
+    "0": {
+        "question": "Wat maakt pestosaus groen?",
+        "choices": {
+            "answerA": "Kleurstof",
+            "answerB": "Basilicum",
+            "answerC": "Pijboompitten",
+            "answerD": "Olijfolie"
+        },
+        "answer": "B",
+        "answerText": "Basilicum"
+    },
+
+    "1": {
+        "question": "Wat is de gemiddelde brandtijd van een waxinelichtje?",
+        "choices": {
+            "answerA": "4 uur",
+            "answerB": "2 uur",
+            "answerC": "5 uur",
+            "answerD": "7 uur"
+        },
+        "answer": "A",
+        "answerText": "4 uur"
+    },
+
+    "2": {
+        "question": "Uit hoeveel tekens kan één sms-bericht maximaal bestaan?",
+        "choices": {
+            "answerA": "80",
+            "answerB": "200",
+            "answerC": "160",
+            "answerD": "120"
+        },
+        "answer": "C",
+        "answerText": "160"
+    },
+
+    "3": {
+        "question": "In welk jaar is electronicabedrijf Apple opgericht?",
+        "choices": {
+            "answerA": "1976",
+            "answerB": "1968",
+            "answerC": "1996",
+            "answerD": "2001"
+        },
+        "answer": "A",
+        "answerText": "1976"
+    },
+
+    "4": {
+        "question": "Welke planeet is de grootste in ons zonnestelsel?",
+        "choices": {
+            "answerA": "Mars",
+            "answerB": "Saturnus",
+            "answerC": "Uranus",
+            "answerD": "Jupiter"
+        },
+        "answer": "D",
+        "answerText": "Jupiter"
+    }
+}
