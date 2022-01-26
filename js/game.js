@@ -24,8 +24,8 @@ window.onload = (event) =>{
     }
     rig.setAttribute('position', `${x}, -30, 7`)
     bal.setAttribute('position', `${x}, -28, 5`)
-    console.log('hi')
-    console.log(x)
+    // console.log('hi')
+    // console.log(x)
   }
 
   //spawns regular blocks
@@ -161,6 +161,7 @@ window.onload = (event) =>{
         //hier komt node.js dinges
         quiz.innerHTML = question
         localStorage.setItem('quiz', question)
+        loadQuestion();
       });
     }
   });

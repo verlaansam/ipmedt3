@@ -1,5 +1,5 @@
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.6.3/firebase-app.js';
-import { getDatabase, ref, set, child, get, onValue } from 'https://www.gstatic.com/firebasejs/9.6.3/firebase-database.js';
+import { getDatabase, ref, set, child, get, onValue, update } from 'https://www.gstatic.com/firebasejs/9.6.3/firebase-database.js';
 
 const firebaseConfig = {
     apiKey: "AIzaSyC2EwA4h1cwnML5IWFC19dpsPNlarOQ7EQ",
@@ -21,12 +21,14 @@ const playerName = document.getElementById("js--name");
 
 let userId;
 
-window.onload = (event) => {
+
+let url = window.location.href;
+if(url.includes("quiz")) {
   get(child(dbRef, 'players')).then((snapshot) => {
     if (snapshot.exists()) {
       insertUser(snapshot.val().length);
     } else {
-      createUserIndex();
+      setUpDatabase();
     }
   }).catch((error) => {
     console.error(error);
@@ -46,10 +48,11 @@ window.onload = (event) => {
       });
     })
   }
-};
+}
 
 
-function createUserIndex(){
+
+function setUpDatabase(){
   set(ref(db, '/'), {
     currentQuestion: 'empty',
     players: {
@@ -88,7 +91,6 @@ function setPlayer(){
 
 function insertAnswer(answer){
   get(child(dbRef, 'currentQuestion/')).then((snapshot) => {
-  
     if(snapshot.val() == 0){
       set(ref(db, 'players/' + userId + '/questions/' + snapshot.val()), {
         answer: answer
@@ -96,6 +98,20 @@ function insertAnswer(answer){
     } else {
       set(ref(db, 'players/' + userId + '/questions/' + snapshot.val() + '/' ), {
         answer: answer
+      });
+    }
+  });
+}
+
+window.loadQuestion = function () {
+  get(child(dbRef, 'currentQuestion/')).then((snapshot) => {
+    if(snapshot.val() == "empty"){
+      update(ref(db, '/'), {
+        currentQuestion: 0
+      });
+    } else {
+      update(ref(db, '/'), {
+        currentQuestion: Number(snapshot.val() + 1)
       });
     }
   });
