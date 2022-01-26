@@ -19,6 +19,11 @@ const dbRef = ref(getDatabase());
 const answerButtons = document.getElementsByClassName("answer-button");
 const playerName = document.getElementById("js--name");
 
+// Tijdelijk
+const calculateButton = document.getElementById("js--calculate");
+// Tijdelijk
+
+
 let userId;
 
 window.onload = (event) => {
@@ -46,6 +51,11 @@ window.onload = (event) => {
       });
     })
   }
+
+  // Tijdelijk
+  
+  // Tijdelijk
+
 };
 
 
@@ -88,7 +98,6 @@ function setPlayer(){
 
 function insertAnswer(answer){
   get(child(dbRef, 'currentQuestion/')).then((snapshot) => {
-  
     if(snapshot.val() == 0){
       set(ref(db, 'players/' + userId + '/questions/' + snapshot.val()), {
         answer: answer
