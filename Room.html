@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!--meta-->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!--link-->
+    <link rel="stylesheet" href="css/homepageStyle.css">
+    <link rel="stylesheet" href="css/room.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+
+    <!--scirpts-->
+    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+
+
+    <title>Room| balloon</title>
+
+</head>
+<body>
+
+    <section class="popup">
+        <article class="popupBox">
+            <h2>Are you sure you want to leave the room?</h2>
+            <button class="btn exitbtn" type="button">
+                <p>Exit</p>
+            </button>
+            <button class="btn staybtn" type="button">
+                <p>stay</p>
+            </button>
+        </article>
+    </section>
+
+    <header>
+        <button class="clouds exitCloud" type="button">
+            <p>Exit</p>
+        </button>
+        <button class="clouds startGameCloud" type="button">
+            <p>Start</p>
+        </button>
+    </header>
+
+    <a-scene>
+        <a-assets>
+            <a-asset-item id="grass" src="models/weiland.gltf" ></a-asset-item>
+            <a-asset-item id="cloud" src="models/cloud1.gltf" ></a-asset-item>
+        </a-assets>
+
+        <a-camara look-controls-enabled="false"></a-camara>
+
+        <a-box gltf-model="#grass" position="-15 0 0" scale="0.3 0.3 0.3" rotation="0 0 0"></a-box>
+        <a-box gltf-model="#grass" position="0 0 -15" scale="0.3 0.3 0.3" rotation="0 90 0"></a-box>
+        <a-box gltf-model="#grass" position="15 0 0" scale="0.3 0.3 0.3" rotation="0 0 0"></a-box>
+        <a-box gltf-model="#grass" position="0 0 15" scale="0.3 0.3 0.3" rotation="0 90 0"></a-box>
+
+        <a-box gltf-model="#cloud" position="0 0 0" scale="5 5 5" rotation="0 0 0"></a-box>
+        
+
+        <a-plane color="#38A505" height="30" width="30" position="0 0 0" rotation="-90 0 0"></a-plane>
+
+        <a-sky color="skyblue"></a-sky>
+
+
+    </a-scene>
+
+
+</body>
+</html>
