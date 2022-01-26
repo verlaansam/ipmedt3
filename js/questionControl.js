@@ -10,37 +10,26 @@ const resultContainer = document.getElementById("js--questionContainerResult");
 const questionAnswer = document.getElementById("js--questionAnswer");
 const questionAnswerText = document.getElementById("js--questionAnswerText");
 const resultColorBox = document.getElementById("js--resultColorBox");
-const nextQuestionButton = document.getElementById("js--nextQuestion");
 
 const scoreText = document.getElementById("js--score");
 
 let score = 0;
-let questionIndex = 0;
+let questionIndex;
 let questionData;
 
 fetch("questions.json")
   .then(response => response.json())
   .then((data) => {
     questionData = data;  
-    showQuestions();
+    gameSet();
 })
 .catch(err => { throw err });
 
-
-function showQuestions() {
-  scoreText.innerHTML = "Score: " + score;
-  answerContainer.style.display = "grid";
-  resultContainer.style.display = "none"
-  questionText.innerHTML = questionData[questionIndex]["question"];
-  answerTextA.innerHTML = questionData[questionIndex]["choices"]["answerA"];
-  answerTextB.innerHTML = questionData[questionIndex]["choices"]["answerB"];
-  answerTextC.innerHTML = questionData[questionIndex]["choices"]["answerC"];
-  answerTextD.innerHTML = questionData[questionIndex ]["choices"]["answerD"];
+function gameSet(){
+  questionText.innerHTML = "Sta klaar, de eerste vraag komt zo!"
 }
 
-
-function checkAnswer(givenAnswer) {
-  nextQuestionButton.innerHTML = "Volgende vraag";
+function checkAnswer(givenAnswer, questionIndex) {
   answerContainer.style.display = "none";
   resultContainer.style.display = "block"
 
@@ -60,33 +49,36 @@ function checkAnswer(givenAnswer) {
 }
 
 
-function nextQuestion(){
-  questionIndex ++;
+function nextQuestion(questionIndex){
+  console.log(questionIndex);
   if(questionIndex < Object.keys(questionData).length){
-    showQuestions();
+    scoreText.innerHTML = "Score: " + score;
+    answerContainer.style.display = "grid";
+    resultContainer.style.display = "none"
+    questionText.innerHTML = questionData[questionIndex]["question"];
+    answerTextA.innerHTML = questionData[questionIndex]["choices"]["answerA"];
+    answerTextB.innerHTML = questionData[questionIndex]["choices"]["answerB"];
+    answerTextC.innerHTML = questionData[questionIndex]["choices"]["answerC"];
+    answerTextD.innerHTML = questionData[questionIndex ]["choices"]["answerD"];
   } else if(questionIndex > Object.keys(questionData).length){
-    resetGame();
+    console.log("reset");
   } else {
     answerContainer.style.display = "none";
     questionText.innerHTML = "Einde Quiz"
-    nextQuestionButton.innerHTML = "Start de quiz opnieuw";
     resultColorBox.style.background = "#EF2F88";
     questionAnswer.innerHTML = "Je hebt alle vragen beantwoord!"
     questionAnswerText.innerHTML = "<b>Score:<b> <br>"  + score;
   }
 }
 
-function getQuestionIndex(){
-  return questionIndex;
-}
-
-function resetGame(){
-  score = 0;
-  questionIndex = 0;
-  showQuestions();
+function change(){
+  console.log('JAAAA yessss het werkt denk ik!!!');
 }
 
 
-window.addEventListener('beforeunload', event => {
-  event.returnValue = "Weet je zeker dat je de pagina wilt verlaten?";
-});
+
+
+
+// window.addEventListener('beforeunload', event => {
+//   event.returnValue = "Weet je zeker dat je de pagina wilt verlaten?";
+// });

@@ -1,5 +1,5 @@
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.6.3/firebase-app.js';
-import { getDatabase, ref, set, child, get } from 'https://www.gstatic.com/firebasejs/9.6.3/firebase-database.js';
+import { getDatabase, ref, set, child, get, onValue } from 'https://www.gstatic.com/firebasejs/9.6.3/firebase-database.js';
 
 const firebaseConfig = {
     apiKey: "AIzaSyC2EwA4h1cwnML5IWFC19dpsPNlarOQ7EQ",
@@ -35,20 +35,23 @@ window.onload = (event) => {
   for(let i = 0; i < answerButtons.length; i++){
     answerButtons[i].addEventListener("click", function(event){
       let givenAnswer = answerButtons[i].getAttribute('answer');
-
-      if(checkAnswer(givenAnswer)){
-        console.log("Goed gedaan!")
-        insertAnswer(true);
-      } else {
-        console.log("Sukkel!")
-        insertAnswer(false);
-      }
+      get(child(dbRef, 'currentQuestion/')).then((snapshot) => {
+        if(checkAnswer(givenAnswer, snapshot.val())){
+          console.log("Goed gedaan!")
+          insertAnswer(true);
+        } else {
+          console.log("Sukkel!")
+          insertAnswer(false);
+        }
+      });
     })
   }
 };
 
+
 function createUserIndex(){
   set(ref(db, '/'), {
+    currentQuestion: 'empty',
     players: {
       1: {
         questions: {
@@ -58,7 +61,7 @@ function createUserIndex(){
     }
   });
   userId = 1;
-  setPlayerName();
+  setPlayer();
 }
 
 function insertUser(id){
@@ -68,23 +71,32 @@ function insertUser(id){
       0: 'empty'
     }
   });
-  setPlayerName();
+  setPlayer();
 }
 
-function setPlayerName(){
+function setPlayer(){
   playerName.innerHTML = "Player: " + userId;
+  const test = ref(db, 'currentQuestion');
+  onValue(test, (snapshot) => {
+    get(child(dbRef, 'currentQuestion/')).then((snapshot) => {
+       if(snapshot.val() != "empty"){
+        nextQuestion(snapshot.val());
+       }
+    });
+  })
 }
 
 function insertAnswer(answer){
-  let index = getQuestionIndex();
-  console.log(index, answer);
-  if(index == 0){
-    set(ref(db, 'players/' + userId + '/questions/' + index ), {
-      answer: answer
-    });
-  } else {
-    set(ref(db, 'players/' + userId + '/questions/' + index + '/' ), {
-      answer: answer
-    });
-  }
+  get(child(dbRef, 'currentQuestion/')).then((snapshot) => {
+  
+    if(snapshot.val() == 0){
+      set(ref(db, 'players/' + userId + '/questions/' + snapshot.val()), {
+        answer: answer
+      });
+    } else {
+      set(ref(db, 'players/' + userId + '/questions/' + snapshot.val() + '/' ), {
+        answer: answer
+      });
+    }
+  });
 }
