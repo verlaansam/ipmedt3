@@ -3,7 +3,12 @@ Username te zien in beeld ✔
 Antwoord checken ✔
 Antwoorden tvg aan db ✔
 Stop and go voor de vragen ✔
-Automatisch vragen oppoppen 
-Pole maken van de beantwoorde vragen
-Vraagteken ? uitleg
+Automatisch vragen oppoppen ✔
+Pole maken van de beantwoorde vragen ✔
+Add score
+Game reset
+Game over screen + score 
+Gezamelijke score 
+Meer vragen toevoegen
 Firebase naar projects account
+Blender models

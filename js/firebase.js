@@ -10,7 +10,7 @@ const firebaseConfig = {
     messagingSenderId: "460998493030",  
     appId: "1:460998493030:web:ab156388a44dac03d97ea7",  
     measurementId: "G-BQZC42JY7V"
-  };
+};
 
 const app = initializeApp(firebaseConfig);
 const db = getDatabase();
@@ -18,6 +18,7 @@ const dbRef = ref(getDatabase());
 
 const answerButtons = document.getElementsByClassName("answer-button");
 const playerName = document.getElementById("js--name");
+const scoreText = document.getElementById("js--score");
 
 let userId;
 
@@ -32,6 +33,7 @@ if(url.includes("quiz")) {
     }
   }).catch((error) => {
     console.error(error);
+    showAlert("Er kan geen verbinding gemaakt worden. Herlaad de pagina of check je internet verbinding");
   });
   
   for(let i = 0; i < answerButtons.length; i++){
@@ -48,12 +50,20 @@ if(url.includes("quiz")) {
       });
     })
   }
+
+  const currentScore = ref(db, 'questionScore');
+  onValue(currentScore, (snapshot) => {
+    get(child(dbRef, 'questionScore/')).then((snapshot) => {
+      scoreText.innerHTML = "Score: " + snapshot.val();
+    });
+  })
 }
 
 
 
 function setUpDatabase(){
   set(ref(db, '/'), {
+    questionScore: 0,
     currentQuestion: 'empty',
     players: {
       1: {
@@ -79,8 +89,8 @@ function insertUser(id){
 
 function setPlayer(){
   playerName.innerHTML = "Player: " + userId;
-  const test = ref(db, 'currentQuestion');
-  onValue(test, (snapshot) => {
+  const currentQuestionIndex = ref(db, 'currentQuestion');
+  onValue(currentQuestionIndex, (snapshot) => {
     get(child(dbRef, 'currentQuestion/')).then((snapshot) => {
        if(snapshot.val() != "empty"){
         nextQuestion(snapshot.val());
@@ -103,6 +113,10 @@ function insertAnswer(answer){
   });
 }
 
+function showAlert(text){
+  alert(text);
+}
+
 window.loadQuestion = function () {
   get(child(dbRef, 'currentQuestion/')).then((snapshot) => {
     if(snapshot.val() == "empty"){
@@ -110,9 +124,36 @@ window.loadQuestion = function () {
         currentQuestion: 0
       });
     } else {
+      calculateAnswer(snapshot.val());
       update(ref(db, '/'), {
         currentQuestion: Number(snapshot.val() + 1)
       });
     }
+  });
+}
+
+function calculateAnswer(index){
+  let answersTrue = 0;
+  let answersFalse = 0;
+  get(child(dbRef, '/players')).then((snapshot) => {
+    for(let i = 1; i < snapshot.val().length; i++){
+      console.log(snapshot.val()[i].questions[index].answer);
+      if(snapshot.val()[i].questions[index].answer){
+        answersTrue++;
+      } else {
+        answersFalse++;
+      }
+    }
+
+    if(answersTrue >= answersFalse){
+      get(child(dbRef, 'questionScore/')).then((snapshot) => {
+        console.log(snapshot.val() + 80);
+        update(ref(db, '/'), {
+          questionScore: Number(snapshot.val() + 80)
+        });
+      });
+    } else {
+      console.log("Ze hebben het fout");
+    } 
   });
 }
