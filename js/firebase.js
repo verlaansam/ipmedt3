@@ -16,8 +16,7 @@ const app = initializeApp(firebaseConfig);
 const db = getDatabase();
 const dbRef = ref(getDatabase());
 const currentScore = ref(db, 'questionScore');
-const gameOver = ref(db, 'gameOver');
-
+const gameState = ref(db, 'currentQuestion');
 
 const answerButtons = document.getElementsByClassName("answer-button");
 const playerName = document.getElementById("js--name");
@@ -58,6 +57,9 @@ if(url.includes("quiz")) {
   onValue(currentScore, (snapshot) => {
     get(child(dbRef, 'questionScore/')).then((snapshot) => {
       scoreText.innerHTML = "Score: " + snapshot.val();
+      if(snapshot.val() == null){
+        location.reload(); 
+      }
       if(document.getElementById("js--quizScore") != null) {
         document.getElementById("js--quizScore").innerHTML = "QuizScore: " + snapshot.val();
       }
@@ -186,6 +188,7 @@ window.showEndScore = function () {
     console.log(totalScore);
     endScore.setAttribute("text", `value: ` + totalScore + `; color:white;`)
   });
-  
-  
+  update(ref(db, '/'), {
+    currentQuestion: "Game Over"
+  });
 }
