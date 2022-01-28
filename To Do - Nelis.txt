@@ -11,7 +11,6 @@ Game over screen + score ✔
 Gezamelijke score ✔
 Won pagina ✔
 Firebase naar projects account
-Blender models
 Proof of concept
 Webpage online zetten
 Vragen toevoegen
