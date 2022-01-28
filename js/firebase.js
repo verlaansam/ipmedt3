@@ -19,7 +19,7 @@ const currentScore = ref(db, 'questionScore');
 const gameState = ref(db, 'currentQuestion');
 
 const answerButtons = document.getElementsByClassName("answer-button");
-const playerName = document.getElementById("js--name");
+const playerName = document.getElementById("js--player");
 const scoreText = document.getElementById("js--score");
 
 let userId;
