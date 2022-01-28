@@ -10,12 +10,14 @@ const resultContainer = document.getElementById("js--questionContainerResult");
 const questionAnswer = document.getElementById("js--questionAnswer");
 const questionAnswerText = document.getElementById("js--questionAnswerText");
 const resultColorBox = document.getElementById("js--resultColorBox");
-
+const playerName = document.getElementById("js--name");
 
 
 
 let questionIndex;
 let questionData;
+
+playerName.innerHTML = localStorage.getItem('name');
 
 fetch("questions.json")
   .then(response => response.json())
@@ -26,6 +28,7 @@ fetch("questions.json")
 .catch(err => { throw err });
 
 function gameSet(){
+
   questionText.innerHTML = "Sta klaar, de eerste vraag komt zo!"
 }
 
