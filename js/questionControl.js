@@ -56,12 +56,6 @@ function nextQuestion(questionIndex){
     answerTextB.innerHTML = questionData[questionIndex]["choices"]["answerB"];
     answerTextC.innerHTML = questionData[questionIndex]["choices"]["answerC"];
     answerTextD.innerHTML = questionData[questionIndex ]["choices"]["answerD"];
-  } else if(questionIndex > Object.keys(questionData).length){
-    answerContainer.style.display = "none";
-    questionText.innerHTML = "Einde Quiz"
-    resultContainer.style.display = "block";
-    questionAnswer.innerHTML = "Einde van de Quizzzz";
-    questionAnswerText.innerHTML = "Kijk bij de VR voor de totale score!";
   } else {
     answerContainer.style.display = "none";
     questionText.innerHTML = "Einde Quiz";

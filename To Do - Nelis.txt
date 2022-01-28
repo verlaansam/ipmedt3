@@ -9,8 +9,7 @@ Add score ✔
 Game reset ✔
 Game over screen + score ✔
 Gezamelijke score ✔
-Won pagina 
-Meer vragen toevoegen
+Won pagina ✔
 Firebase naar projects account
 Blender models
 Proof of concept

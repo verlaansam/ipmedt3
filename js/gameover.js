@@ -12,7 +12,7 @@ window.onload = (event) =>{
     textScore.setAttribute("scale","5 5 5")
     textScore.setAttribute("position", "2.5 0 -4")
     document.querySelector("a-scene").appendChild(textScore)
-    showEndScore();
+    showEndScore("Game Over");
 
     var time = localStorage.getItem('time')
     var textTime = document.createElement("a-entity")
