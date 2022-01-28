@@ -15,6 +15,7 @@
 
     <!--scirpts-->
     <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+    <script src="js/roomBtn.js"></script>
 
 
     <title>Room| balloon</title>
@@ -45,7 +46,20 @@
 
         </a-assets>
 
-        <a-camara></a-camara>
+        <a-camera id="js--camera">
+            <a-entity
+                id="js--cursor"
+                animation__click="property: scale; startEvents: click; easing: easeInCubic; dur: 150; from: 0.1 0.1 0.1; to: 1 1 1"
+                animation__fusing="property: scale; startEvents: fusing; easing: easeInCubic; dur: 1000; from: 1 1 1; to: 0.1 0.1 0.1"
+                animation="property: scale; startEvents: mouseleave; easing: easeInCubic; dur: 1000; to: 1 1 1"
+
+                cursor = "fuse: true; fuseTimeout: 1000"
+                material = "color: black; shader: flat"
+                position = "0 0 -0.5"
+                raycaster = "objects: .js-startQuizBtn, .js-startVRBtn"
+            ></a-entity>
+            <a-cursor id="js--cursor" position=" 0 0 -1" color="purple"></a-cursor>
+        </a-camera>
 
         <a-box gltf-model="#grass" position="-15 -3 0" scale="0.3 0.3 0.3" rotation="0 0 0"></a-box>
         <a-box gltf-model="#grass" position="0 -3 -15" scale="0.3 0.3 0.3" rotation="0 90 0"></a-box>
@@ -55,11 +69,20 @@
         <a-box gltf-model="#LBchar" position="5 0 9" scale="0.5 0.5 0.5" ></a-box>
         <a-box gltf-model="#DBchar" position="3 0 -8" scale="0.5 0.5 0.5" ></a-box>
 
-        <a-box material="src:#wood" position="0.2 3 -10" scale="3.2 1.5 0.1"></a-box>
-        <a-entity text="value: Start the game; color:black;" position="3.75 3 -9.95" scale="10 10 10"></a-entity>
+        <a-box material="src:#wood" position="0 4 -10" scale="3.2 1.2 0.1"></a-box>
+        <a-entity text="value: Start the game; color:black;" position="3.55 4 -9.95" scale="10 10 10"></a-entity>
 
-        <a-box color="#0003E7" position="0.2 0.5 -9" scale="1 1.5 1"></a-box>
-        <a-box gltf-model="#button" class="js-startBtn" position="0.2 1.2 -9"></a-box>
+        <a-box material="src:#wood" position="-1 2.5 -10" scale="1.2 1 0.1"></a-box>
+        <a-entity text="value: Quiz; color:black;" position="3.5 2.5 -9.95" scale="10 10 10"></a-entity>
+
+        <a-box material="src:#wood" position="1 2.5 -10" scale="1.2 1 0.1"></a-box>
+        <a-entity text="value: VR; color:black;" position="5.65 2.5 -9.95" scale="10 10 10"></a-entity>
+
+        <a-box color="#0003E7" position="-1 0.5 -9" scale="1 1.5 1"></a-box>
+        <a-box gltf-model="#button" class="js-startQuizBtn" position="-1 1.2 -9"></a-box>
+
+        <a-box color="#00AEE7" position="1 0.5 -9" scale="1 1.5 1"></a-box>
+        <a-box gltf-model="#button" class="js-startVRBtn" position="1 1.2 -9"></a-box>
 
         <a-box gltf-model="#cloud" position="0 12 0" scale="0.8 0.8 0.8" ></a-box>
         <a-box gltf-model="#cloud" position="3 15 10" scale="0.8 0.8 0.8" ></a-box>
