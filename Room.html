@@ -40,12 +40,12 @@
             <a-asset-item id="cloud" src="models/cloud1.glb" ></a-asset-item>
             <a-asset-item id="LBchar" src="models/poppetjeLB.gltf"></a-asset-item>
             <a-asset-item id="DBchar" src="models/poppetjeDB.gltf"></a-asset-item>
-            <a-asset-item id="sign" src="models/sign.glb"></a-asset-item>
-            <img id="wood" src="img/RV Wood 2_baseColor.png">
-            
+            <a-asset-item id="button" src="models/button.glb"></a-asset-item>
+            <img id="wood" src="img/wood.png">
+
         </a-assets>
 
-        <a-camara look-controls-enabled="false"></a-camara>
+        <a-camara></a-camara>
 
         <a-box gltf-model="#grass" position="-15 -3 0" scale="0.3 0.3 0.3" rotation="0 0 0"></a-box>
         <a-box gltf-model="#grass" position="0 -3 -15" scale="0.3 0.3 0.3" rotation="0 90 0"></a-box>
@@ -55,7 +55,11 @@
         <a-box gltf-model="#LBchar" position="5 0 9" scale="0.5 0.5 0.5" ></a-box>
         <a-box gltf-model="#DBchar" position="3 0 -8" scale="0.5 0.5 0.5" ></a-box>
 
-        <a-box glb-model= "sign" material="" position="0 3 -10"></a-box>
+        <a-box material="src:#wood" position="0.2 3 -10" scale="3.2 1.5 0.1"></a-box>
+        <a-entity text="value: Start the game; color:black;" position="3.75 3 -9.95" scale="10 10 10"></a-entity>
+
+        <a-box color="#0003E7" position="0.2 0.5 -9" scale="1 1.5 1"></a-box>
+        <a-box gltf-model="#button" class="js-startBtn" position="0.2 1.2 -9"></a-box>
 
         <a-box gltf-model="#cloud" position="0 12 0" scale="0.8 0.8 0.8" ></a-box>
         <a-box gltf-model="#cloud" position="3 15 10" scale="0.8 0.8 0.8" ></a-box>
