@@ -20,8 +20,9 @@
     <header>
         <h1>Score:</h1>
         <h1 id="score">0</h1>
-        <h1 id="quiz">Questions: </h1>
-        <h1 id="js--quizScore">Quizscore: 0</h1>
+        <h1 id="js--quizscore">0</h1>
+        <h1>Questions: </h1>
+        <h1 id="quiz">0</h1>
     </header>
     <a-scene id="scene" physics="driver: ammo; debug: false; debugDrawMode: 1;">
         <a-assets>
@@ -36,7 +37,7 @@
         <a-entity id="rig" position="4 -30 7" rotation="65 0 0">
             <a-entity id="camera" camera look-controls>
                 <a-cursor position=" 0 0 -1" color="purple"></a-cursor>
-                <a-plane width="4" height="3" color="orange" position="-8 3.5 -5"></a-plane>
+                <a-plane width="4" height="4" color="orange" position="-8 3 -5"></a-plane>
                 <a-sphere geometry="primitive: sphere"
                     ammo-body="type: static; emitCollisionEvents: true;" ammo-shape="type: sphere"
                     position="0 0 -6" radius="0.49"
@@ -48,10 +49,10 @@
             position="4 -28 5" rotation="-90 0 0" width="0.99"></a-entity>
         <a-box gltf-model="#cloud" position="-10 3 8" rotation="0 -90 -90"></a-box>
         <a-box gltf-model="#cloud" position="10 3 12" rotation="0 -90 -90"></a-box>
-        <a-box gltf-model="#cloud" position="30 3 10" rotation="-45 -90 -90"></a-box>
-        <a-box gltf-model="#cloud" position="-30 3 3" rotation="45 -90 -90"></a-box>
-        <a-box gltf-model="#cloud" position="60 3 8" rotation="-45 -90 -90"></a-box>
-        <a-box gltf-model="#cloud" position="-60 3 6" rotation="45 -90 -90"></a-box>
+        <a-box gltf-model="#cloud" position="30 3 10" rotation="0 -90 -90"></a-box>
+        <a-box gltf-model="#cloud" position="-30 3 3" rotation="0 -90 -90"></a-box>
+        <a-box gltf-model="#cloud" position="60 3 8" rotation="0 -90 -90"></a-box>
+        <a-box gltf-model="#cloud" position="-60 3 6" rotation="0 -90 -90"></a-box>
 
         <a-box gltf-model="#cloud" position="-22 3 21" rotation="0 -90 -90"></a-box>
         <a-box gltf-model="#cloud" position="18 3 19" rotation="0 -90 -90"></a-box>
