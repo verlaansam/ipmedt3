@@ -10,7 +10,6 @@ Game reset ✔
 Game over screen + score ✔
 Gezamelijke score ✔
 Won pagina ✔
-Firebase naar projects account
+Firebase naar projects account ✔
 Proof of concept
 Webpage online zetten
-Vragen toevoegen

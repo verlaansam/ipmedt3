@@ -2,14 +2,14 @@ import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.6.3/firebase
 import { getDatabase, ref, set, child, get, onValue, update } from 'https://www.gstatic.com/firebasejs/9.6.3/firebase-database.js';
 
 const firebaseConfig = {
-    apiKey: "AIzaSyC2EwA4h1cwnML5IWFC19dpsPNlarOQ7EQ",
-    authDomain: "ipomedt3-groep15.firebaseapp.com",  
-    databaseURL: "https://ipomedt3-groep15-default-rtdb.europe-west1.firebasedatabase.app",  
-    projectId: "ipomedt3-groep15",  
-    storageBucket: "ipomedt3-groep15.appspot.com",  
-    messagingSenderId: "460998493030",  
-    appId: "1:460998493030:web:ab156388a44dac03d97ea7",  
-    measurementId: "G-BQZC42JY7V"
+  apiKey: "AIzaSyCGiugHZwjbSM4ByAi1JhsYjuv8QQD6Xpk",
+  authDomain: "ipmedt3-15.firebaseapp.com",
+  databaseURL: "https://ipmedt3-15-default-rtdb.europe-west1.firebasedatabase.app",
+  projectId: "ipmedt3-15",
+  storageBucket: "ipmedt3-15.appspot.com",
+  messagingSenderId: "826692783774",
+  appId: "1:826692783774:web:fa6e0f0311422e3b68358f",
+  measurementId: "G-S9L6B259YV"
 };
 
 const app = initializeApp(firebaseConfig);
