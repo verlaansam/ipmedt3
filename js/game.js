@@ -158,10 +158,9 @@ window.onload = (event) =>{
       el.addEventListener("collidestart", function () {
         question += 1;
         console.log(question)
-        //hier komt node.js dinges
+        loadQuestion();
         quiz.innerHTML = question
         localStorage.setItem('quiz', question)
-        loadQuestion();
       });
     }
   });

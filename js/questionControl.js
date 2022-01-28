@@ -61,8 +61,6 @@ function nextQuestion(questionIndex){
   } else {
     answerContainer.style.display = "none";
     questionText.innerHTML = "Einde Quiz"
-    resultColorBox.style.background = "#EF2F88";
-    questionAnswer.innerHTML = "Je hebt alle vragen beantwoord!"
   }
 }
 

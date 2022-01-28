@@ -55,6 +55,18 @@ if(url.includes("quiz")) {
   onValue(currentScore, (snapshot) => {
     get(child(dbRef, 'questionScore/')).then((snapshot) => {
       scoreText.innerHTML = "Score: " + snapshot.val();
+      if(document.getElementById("js--quizScore") != null) {
+        document.getElementById("js--quizScore").innerHTML = "QuizScore: " + snapshot.val();
+      }
+    });
+  })
+}
+
+if(document.getElementById("js--quizScore") != null) {
+  const currentScore = ref(db, 'questionScore');
+  onValue(currentScore, (snapshot) => {
+    get(child(dbRef, 'questionScore/')).then((snapshot) => {
+      document.getElementById("js--quizScore").innerHTML = "QuizScore: " + snapshot.val();
     });
   })
 }
@@ -119,16 +131,18 @@ function showAlert(text){
 
 window.loadQuestion = function () {
   get(child(dbRef, 'currentQuestion/')).then((snapshot) => {
-    if(snapshot.val() == "empty"){
-      update(ref(db, '/'), {
-        currentQuestion: 0
-      });
-    } else {
-      calculateAnswer(snapshot.val());
-      update(ref(db, '/'), {
-        currentQuestion: Number(snapshot.val() + 1)
-      });
-    }
+    if(snapshot.val() != null){
+      if(snapshot.val() == "empty"){
+        update(ref(db, '/'), {
+          currentQuestion: 0
+        });
+      } else {
+        calculateAnswer(snapshot.val());
+        update(ref(db, '/'), {
+          currentQuestion: Number(snapshot.val() + 1)
+        });
+      }
+    } 
   });
 }
 
