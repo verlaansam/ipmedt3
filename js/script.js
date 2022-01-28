@@ -6,6 +6,7 @@ const questBtn = document.querySelector('.questionCloud');
 const makeBtn = document.querySelector('.makeCloud');*/
 
 const join2Btn = document.querySelector('.join2Cloud');
+const playerName = document.getElementById("js--name");
 
 if(document.body.contains(startBtn)){
     startBtn.addEventListener("click", () => {
@@ -27,8 +28,13 @@ if(document.body.contains(questBtn)){
 
 if (document.body.contains(join2Btn)){
     join2Btn.addEventListener('click', ()=>{
+        setPlayerName();
         window.location.href = 'room.html';
     });
+}
+
+function setPlayerName(){
+    localStorage.setItem('name', playerName.value);
 }
 
 /*if(document.body.contains(joinBtn)){
