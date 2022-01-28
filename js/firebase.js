@@ -15,6 +15,9 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getDatabase();
 const dbRef = ref(getDatabase());
+const currentScore = ref(db, 'questionScore');
+const gameOver = ref(db, 'gameOver');
+
 
 const answerButtons = document.getElementsByClassName("answer-button");
 const playerName = document.getElementById("js--name");
@@ -51,7 +54,7 @@ if(url.includes("quiz")) {
     })
   }
 
-  const currentScore = ref(db, 'questionScore');
+  
   onValue(currentScore, (snapshot) => {
     get(child(dbRef, 'questionScore/')).then((snapshot) => {
       scoreText.innerHTML = "Score: " + snapshot.val();
@@ -63,12 +66,23 @@ if(url.includes("quiz")) {
 }
 
 if(document.getElementById("js--quizScore") != null) {
-  const currentScore = ref(db, 'questionScore');
+  const quizScore = document.getElementById("js--quizScore");
+  set(ref(db, '/'), {});
   onValue(currentScore, (snapshot) => {
     get(child(dbRef, 'questionScore/')).then((snapshot) => {
-      document.getElementById("js--quizScore").innerHTML = "QuizScore: " + snapshot.val();
+      if(snapshot.val() == null){
+        quizScore.innerHTML = "Er zijn geen Quizers";
+      } else {
+        quizScore.innerHTML = "QuizScore: " + snapshot.val();
+      }
     });
   })
+}
+
+if(url.includes("over")) {
+  onValue(gameOver, (snapshot) => {
+    
+  });
 }
 
 
