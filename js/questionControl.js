@@ -57,12 +57,17 @@ function nextQuestion(questionIndex){
     answerTextC.innerHTML = questionData[questionIndex]["choices"]["answerC"];
     answerTextD.innerHTML = questionData[questionIndex ]["choices"]["answerD"];
   } else if(questionIndex > Object.keys(questionData).length){
-    console.log("reset");
-  } else {
     answerContainer.style.display = "none";
     questionText.innerHTML = "Einde Quiz"
-    resultColorBox.style.background = "#EF2F88";
-    questionAnswer.innerHTML = "Je hebt alle vragen beantwoord!"
+    resultContainer.style.display = "block";
+    questionAnswer.innerHTML = "Einde van de Quizzzz";
+    questionAnswerText.innerHTML = "Kijk bij de VR voor de totale score!";
+  } else {
+    answerContainer.style.display = "none";
+    questionText.innerHTML = "Einde Quiz";
+    resultContainer.style.display = "block";
+    questionAnswer.innerHTML = "Einde van de Quizzzz";
+    questionAnswerText.innerHTML = "Kijk bij de VR voor de totale score!";
   }
 }
 

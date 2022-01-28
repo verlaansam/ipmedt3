@@ -15,6 +15,9 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getDatabase();
 const dbRef = ref(getDatabase());
+const currentScore = ref(db, 'questionScore');
+const gameOver = ref(db, 'gameOver');
+
 
 const answerButtons = document.getElementsByClassName("answer-button");
 const playerName = document.getElementById("js--name");
@@ -51,12 +54,35 @@ if(url.includes("quiz")) {
     })
   }
 
-  const currentScore = ref(db, 'questionScore');
+  
   onValue(currentScore, (snapshot) => {
     get(child(dbRef, 'questionScore/')).then((snapshot) => {
       scoreText.innerHTML = "Score: " + snapshot.val();
+      if(document.getElementById("js--quizScore") != null) {
+        document.getElementById("js--quizScore").innerHTML = "QuizScore: " + snapshot.val();
+      }
     });
   })
+}
+
+if(document.getElementById("js--quizScore") != null) {
+  const quizScore = document.getElementById("js--quizScore");
+  set(ref(db, '/'), {});
+  onValue(currentScore, (snapshot) => {
+    get(child(dbRef, 'questionScore/')).then((snapshot) => {
+      if(snapshot.val() == null){
+        quizScore.innerHTML = "Er zijn geen Quizers";
+      } else {
+        quizScore.innerHTML = "QuizScore: " + snapshot.val();
+      }
+    });
+  })
+}
+
+if(url.includes("over")) {
+  onValue(gameOver, (snapshot) => {
+    
+  });
 }
 
 
@@ -119,16 +145,18 @@ function showAlert(text){
 
 window.loadQuestion = function () {
   get(child(dbRef, 'currentQuestion/')).then((snapshot) => {
-    if(snapshot.val() == "empty"){
-      update(ref(db, '/'), {
-        currentQuestion: 0
-      });
-    } else {
-      calculateAnswer(snapshot.val());
-      update(ref(db, '/'), {
-        currentQuestion: Number(snapshot.val() + 1)
-      });
-    }
+    if(snapshot.val() != null){
+      if(snapshot.val() == "empty"){
+        update(ref(db, '/'), {
+          currentQuestion: 0
+        });
+      } else {
+        calculateAnswer(snapshot.val());
+        update(ref(db, '/'), {
+          currentQuestion: Number(snapshot.val() + 1)
+        });
+      }
+    } 
   });
 }
 
