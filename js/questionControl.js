@@ -56,21 +56,18 @@ function nextQuestion(questionIndex){
     answerTextB.innerHTML = questionData[questionIndex]["choices"]["answerB"];
     answerTextC.innerHTML = questionData[questionIndex]["choices"]["answerC"];
     answerTextD.innerHTML = questionData[questionIndex ]["choices"]["answerD"];
-  } else if(questionIndex > Object.keys(questionData).length){
-    answerContainer.style.display = "none";
-    questionText.innerHTML = "Einde Quiz"
-    resultContainer.style.display = "block";
-    questionAnswer.innerHTML = "Einde van de Quizzzz";
-    questionAnswerText.innerHTML = "Kijk bij de VR voor de totale score!";
   } else {
     answerContainer.style.display = "none";
     questionText.innerHTML = "Einde Quiz";
     resultContainer.style.display = "block";
-    questionAnswer.innerHTML = "Einde van de Quizzzz";
+    questionAnswer.innerHTML = "Game Over!";
     questionAnswerText.innerHTML = "Kijk bij de VR voor de totale score!";
   }
 }
 
+function quizGameOver() {
+  console.log("Game Over!!!!!!!");
+}
 // window.addEventListener('beforeunload', event => {
 //   event.returnValue = "Weet je zeker dat je de pagina wilt verlaten?";
 // });

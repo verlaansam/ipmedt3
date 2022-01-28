@@ -7,9 +7,9 @@ Automatisch vragen oppoppen ✔
 Pole maken van de beantwoorde vragen ✔
 Add score ✔
 Game reset ✔
-Game over screen + score  
-Gezamelijke score 
-Meer vragen toevoegen
+Game over screen + score ✔
+Gezamelijke score ✔
+Won pagina ✔
 Firebase naar projects account
 Blender models
 Proof of concept

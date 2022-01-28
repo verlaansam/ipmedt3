@@ -8,10 +8,11 @@ window.onload = (event) =>{
 
     var score = localStorage.getItem('points')
     var textScore = document.createElement("a-entity")
+    textScore.id = "js--endQuizScore";
     textScore.setAttribute("scale","5 5 5")
     textScore.setAttribute("position", "2.5 0 -4")
-    textScore.setAttribute("text", `value: ${score}; color:white;`)
     document.querySelector("a-scene").appendChild(textScore)
+    showEndScore("Game Over");
 
     var time = localStorage.getItem('time')
     var textTime = document.createElement("a-entity")
@@ -37,5 +38,4 @@ window.onload = (event) =>{
         console.log("click")
         location.href = "index.html"
     });
-    
 }
