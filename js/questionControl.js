@@ -11,9 +11,9 @@ const questionAnswer = document.getElementById("js--questionAnswer");
 const questionAnswerText = document.getElementById("js--questionAnswerText");
 const resultColorBox = document.getElementById("js--resultColorBox");
 
-const scoreText = document.getElementById("js--score");
 
-let score = 0;
+
+
 let questionIndex;
 let questionData;
 
@@ -36,23 +36,19 @@ function checkAnswer(givenAnswer, questionIndex) {
   questionAnswer.innerHTML = questionData[questionIndex]["answerText"]
 
   if(givenAnswer == questionData[questionIndex]["answer"]){
-    score += 80;
-    scoreText.innerHTML = "Score: " + score;
     resultColorBox.style.background = "#96CEB4";
-    questionAnswerText.innerHTML = "Goed gedaan! Je score is nu " + score + "!";
+    questionAnswerText.innerHTML = "Goed gedaan!";
     return true;
   } else {
     resultColorBox.style.background = "#D9534F";
-    questionAnswerText.innerHTML = "Volgende keer beter. Je score blijft " + score;
+    questionAnswerText.innerHTML = "Volgende keer beter...";
     return false;
   }
 }
 
 
 function nextQuestion(questionIndex){
-  console.log(questionIndex);
   if(questionIndex < Object.keys(questionData).length){
-    scoreText.innerHTML = "Score: " + score;
     answerContainer.style.display = "grid";
     resultContainer.style.display = "none"
     questionText.innerHTML = questionData[questionIndex]["question"];
@@ -67,17 +63,8 @@ function nextQuestion(questionIndex){
     questionText.innerHTML = "Einde Quiz"
     resultColorBox.style.background = "#EF2F88";
     questionAnswer.innerHTML = "Je hebt alle vragen beantwoord!"
-    questionAnswerText.innerHTML = "<b>Score:<b> <br>"  + score;
   }
 }
-
-function change(){
-  console.log('JAAAA yessss het werkt denk ik!!!');
-}
-
-
-
-
 
 // window.addEventListener('beforeunload', event => {
 //   event.returnValue = "Weet je zeker dat je de pagina wilt verlaten?";
