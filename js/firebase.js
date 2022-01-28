@@ -79,14 +79,6 @@ if(document.getElementById("js--quizScore") != null) {
   })
 }
 
-if(url.includes("over")) {
-  onValue(gameOver, (snapshot) => {
-    
-  });
-}
-
-
-
 function setUpDatabase(){
   set(ref(db, '/'), {
     questionScore: 0,
@@ -143,23 +135,6 @@ function showAlert(text){
   alert(text);
 }
 
-window.loadQuestion = function () {
-  get(child(dbRef, 'currentQuestion/')).then((snapshot) => {
-    if(snapshot.val() != null){
-      if(snapshot.val() == "empty"){
-        update(ref(db, '/'), {
-          currentQuestion: 0
-        });
-      } else {
-        calculateAnswer(snapshot.val());
-        update(ref(db, '/'), {
-          currentQuestion: Number(snapshot.val() + 1)
-        });
-      }
-    } 
-  });
-}
-
 function calculateAnswer(index){
   let answersTrue = 0;
   let answersFalse = 0;
@@ -184,4 +159,33 @@ function calculateAnswer(index){
       console.log("Ze hebben het fout");
     } 
   });
+}
+
+window.loadQuestion = function () {
+  get(child(dbRef, 'currentQuestion/')).then((snapshot) => {
+    if(snapshot.val() != null){
+      if(snapshot.val() == "empty"){
+        update(ref(db, '/'), {
+          currentQuestion: 0
+        });
+      } else {
+        calculateAnswer(snapshot.val());
+        update(ref(db, '/'), {
+          currentQuestion: Number(snapshot.val() + 1)
+        });
+      }
+    } 
+  });
+}
+
+window.showEndScore = function () {
+  const endScore = document.getElementById("js--endQuizScore");
+  let gameScore = localStorage.getItem('points');
+  get(child(dbRef, 'questionScore/')).then((snapshot) => {
+    let totalScore = Number(snapshot.val() + Number(gameScore));
+    console.log(totalScore);
+    endScore.setAttribute("text", `value: ` + totalScore + `; color:white;`)
+  });
+  
+  
 }
